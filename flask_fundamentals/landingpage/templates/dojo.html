@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style_sheet.css')}}">
+        <title>Dojo</title>
+    </head>
+    <body>
+        <div id="header"> 
+            <img src="{{ url_for('static', filename='my_img.png') }}" alt="ninjas picture">           
+            <p class="text1">Ninjas<span class="blue">net </span></p>
+            <p class="header1">The World of Ninjas</p>  
+        </div>
+        <div id="main_content">
+            <form action='' method='post'>
+                Name:<input type='text' name='name'>
+                Email:<input type='text' name='email'>
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+    </body>
+</html>
