@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style_sheet.css')}}">
+        <title>Dojo</title>
+    </head>
+    <body>
+        <div id="header"> 
+            <p class="header1">What's My Name?</p>  
+        </div>
+        <div id="main_content">
+            <form action='/process' method='post'>
+                Yor Name:  <input type='text' name='name'>
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+    </body>
+</html>
