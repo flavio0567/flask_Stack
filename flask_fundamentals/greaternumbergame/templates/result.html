@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <h1>Welcome to the Great Number Game</h1>
+        <p class="lead">I am thinking of a number between 1 and 100</p>
+        <p class="lead">Take a guess!</p>
+    </div>
+
+    <div id="container">
+
+        {% if find == 1  %}
+            {% set find = '' %}
+            <h2> {{ num }} was the number! </h2>
+            <form method="post" action="/reset">
+            <button class="btn btn-primary" type="submit" value="Reset">Play again!</button>
+        {% endif%}
+
+
+{% endblock %}
