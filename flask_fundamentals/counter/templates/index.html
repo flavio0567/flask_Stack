@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <h1>Counter</h1>
+    <h2> {{ count }}  times</h2>
+
+    <div id="container">
+        <form method="post" action="/process">
+            <input type="hidden" name="action" value="reload">
+            <button class="btn btn-primary" type="submit" value="Reload">Reload</button>
+        </form>
+        <form method="post" action="/process">
+            <input type="hidden" name="action" value="plus2">
+            <button class="btn btn-primary" type="submit" value="Plus 2">Plus 2</button>
+        </form>
+        <form method="post" action="/reset">
+            <input type="hidden" name="action" value="reset">
+            <button class="btn btn-primary" type="submit" value="Reset">Reset</button>
+        </form>
+    </div>
+{% endblock %}

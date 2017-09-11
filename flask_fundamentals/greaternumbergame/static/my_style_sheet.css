@@ -1,0 +1,20 @@
+* {
+    margin: 0px;
+    padding: 0px;
+   }
+
+h1 {
+    margin: 50px;
+}
+
+h2 {
+    margin: 60px;
+}
+
+form {
+    display: inline-block;
+}
+
+.btn, btn-primary {
+    margin: 10px 0 0 10px;
+}
