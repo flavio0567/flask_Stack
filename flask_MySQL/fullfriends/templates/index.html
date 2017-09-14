@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style_sheet.css') }}">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+        <title>Friends</title>
+    </head>
+    <body>
+        <header>
+
+            <h1>Friends</h1>
+
+        </header>
+
+        <article>
+
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Friend Since</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for friend in all_friends: %}
+                    <tr>
+                        <td>{{ friend['id'] }} </td>
+                        <td>{{ friend['first_name'] }}  {{ friend['last_name'] }}</td>
+                        <td>{{ friend['age'] }}</td>
+                        <td>{{ friend['friend_since'] }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table> 
+
+            <h2>Add a Friend</h2>
+            <form action='/friends' method='POST'>
+                <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+                <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+                <label for="age">Age:<input type="text" name="age" id="age"></label>
+                <label for="friend_since">Friend Since:<input type="date" name="friend_since" id="friend_since"></label>
+                <input type="submit" value="Add">
+            </form>
+
+        </article>
+
+    </body>
+</html>
+    
