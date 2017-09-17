@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    
+    <form class="form-horizontal" action='/check_login' method='POST'>
+        <fieldset>
+            <legend>Login</legend>         
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <input class="form-control" name="email" placeholder="Email" type="email" value="{{session['email']}}" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <input class="form-control" name="passwd" placeholder="Password" type="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            <span class="help-block">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            </span>
+        </fieldset>
+    </form>
+
+{% endblock %}

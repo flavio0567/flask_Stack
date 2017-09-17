@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <h4 class="welcome"> Welcome {{session['first_name']}} {{session['last_name']}}</h4>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal" method="post" action="/check_wall">
+                <div class="form-group">
+                    <label class="control-label" for="focusedInput">   Post a message</label>
+                    <textarea class="form-control" rows="3" name="inputMessage"></textarea>
+                </div> 
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary btn-sm">Post a message</button>
+                    </div>
+                </div>
+            </form>
+            {% if session['messages'] %}
+                {%- for messages in session['messages'] %}
+                    <p class="owner_mess">{{ messages['first_name'] + " " + messages['last_name'] + " - " + messages['mess_date'] }}</p>
+                    <p class="mess">{{ messages['message'] }}</p>   
+                    {% if session['comments'] %}
+                        {% for comments in session['comments']: %}
+                            {% if messages['message_id'] == comments["message_id"] %}
+                                <p class="owner_comm">{{ comments['first_name'] + " " + comments['last_name'] + " - " + comments['comm_date'] }}</p>
+                                <p class="comm">{{ comments['comment'] }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <form method="post" method="post" action="/check_comment/{{messages['message_id'] }}">
+                        <div class="form-group">                   
+                            <label class="control-label" for="focusedInput">Post a comment</label>
+                            <textarea class="form-control" rows="3" name="inputComment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="submit" class="btn btn-success btn-sm">Post a comment</button>
+                            </div>
+                        </div>
+                    </form>
+                {% endfor -%}    
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
